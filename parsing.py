@@ -31,7 +31,7 @@ async def start(message: types.Message):
         await message.answer(f" Валюта {time}:\nКурс USD: {usd[0].text}\nКурс EUR: {euro[2].text}\nКурс RUB: {rub[4].text}\n")
     
 
-async def send_currency_rates_periodically(message):
+async def send_send(message):
     while True:
         await message.answer(message)
         await asyncio.sleep(60)  
@@ -44,7 +44,7 @@ async def on_startup(dispatcher):
 @dp.message_handler(commands=["start"])
 async def start(message: types.Message):
     await message.answer(message)
-    asyncio.create_task(send_currency_rates_periodically(message))
+    asyncio.create_task(send_send(message))
 
 
 executor.start_polling(dp)
